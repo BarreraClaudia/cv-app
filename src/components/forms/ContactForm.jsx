@@ -1,0 +1,51 @@
+import { useState } from 'react';
+
+import Input from './Input';
+
+export default function ContactForm({ data, updateData }) {
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [website, setWebsite] = useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    updateData({
+      ...data,
+      contact: {
+        email,
+        phone,
+        website,
+      },
+    });
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input
+        type={'email'}
+        label={'Email'}
+        placeholder={'janedoe@mail.com'}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <Input
+        type={'text'}
+        label={'Phone Number'}
+        placeholder={'(333)333-3333'}
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+      />
+
+      <Input
+        type={'text'}
+        label={'Website'}
+        placeholder={'www.portfolio.com'}
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+      />
+
+      <button>Submit</button>
+    </form>
+  );
+}
