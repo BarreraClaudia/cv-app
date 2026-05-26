@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Pencil, Trash } from 'lucide-react';
 import Input from './Input';
 
 export default function WorkForm({ data, updateData }) {
@@ -26,12 +26,48 @@ export default function WorkForm({ data, updateData }) {
         },
       ],
     });
+
+    setJobTitle('');
+    setCompany('');
+    setYearStart('');
+    setYearEnd('');
+    setDetails([]);
   }
 
   function handleAddDetail(e) {
     e.preventDefault();
     setDetails([...details, { id: crypto.randomUUID(), text: currentDetail }]);
     setCurrentDetail(''); // reset input
+  }
+
+  function handleEditDetail(d) {
+    setCurrentDetail(d.text);
+
+    // remove detail so it doesn't appear twice after resubmit
+    const filteredDetails = details.filter((detail) => detail.id !== d.id);
+    setDetails(filteredDetails);
+  }
+
+  function handleDeleteDetail(d) {
+    const filteredDetails = details.filter((detail) => detail.id !== d.id);
+    setDetails(filteredDetails);
+  }
+
+  function handleEditJob(w) {
+    setJobTitle(w.jobTitle);
+    setCompany(w.company);
+    setYearStart(w.yearStart);
+    setYearEnd(w.yearEnd);
+    setDetails(w.details);
+
+    // remove job so it doesn't appear twice after resubmit
+    const filteredData = data.work.filter((job) => job.id !== w.id);
+    updateData({ ...data, work: [...filteredData] });
+  }
+
+  function handleDeleteJob(w) {
+    const filteredData = data.work.filter((job) => job.id !== w.id);
+    updateData({ ...data, work: [...filteredData] });
   }
 
   return (
@@ -83,12 +119,35 @@ export default function WorkForm({ data, updateData }) {
 
         <ul>
           {details.map((d) => (
-            <li key={d.id}>{d.text}</li>
+            <li key={d.id}>
+              {d.text}
+              <Pencil onClick={() => handleEditDetail(d)} />
+              <Trash onClick={() => handleDeleteDetail(d)} />
+            </li>
           ))}
         </ul>
 
         <button>Submit</button>
       </form>
+
+      <div>
+        {data.work.map((w) => (
+          <div key={w.id}>
+            <h3>{w.jobTitle}</h3>
+            <p>{w.company}</p>
+            <p>
+              {w.yearStart} to {w.yearEnd}
+            </p>
+            <ul>
+              {w.details.map((d) => (
+                <li key={d.id}>{d.text}</li>
+              ))}
+            </ul>
+            <Pencil onClick={() => handleEditJob(w)} />
+            <Trash onClick={() => handleDeleteJob(w)} />
+          </div>
+        ))}
+      </div>
     </>
   );
 }

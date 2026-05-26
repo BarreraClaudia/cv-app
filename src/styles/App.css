@@ -1,1 +1,4 @@
-
+.accordion-and-cv-preview-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}

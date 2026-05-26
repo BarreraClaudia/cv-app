@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Pencil, Trash } from 'lucide-react';
 import Input from './Input';
 
 export default function EducationForm({ data, updateData }) {
@@ -9,6 +9,7 @@ export default function EducationForm({ data, updateData }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     updateData({
       ...data,
       education: [
@@ -16,35 +17,71 @@ export default function EducationForm({ data, updateData }) {
         { id: crypto.randomUUID(), degree, school, year },
       ],
     });
+
+    setDegree('');
+    setSchool('');
+    setYear('');
+  }
+
+  function handleEdit(ed) {
+    setDegree(ed.degree);
+    setSchool(ed.school);
+    setYear(ed.year);
+
+    const filteredEducation = data.education.filter(
+      (educ) => educ.id !== ed.id,
+    );
+    updateData({ ...data, education: [...filteredEducation] });
+  }
+
+  function handleDelete(ed) {
+    const filteredEducation = data.education.filter(
+      (educ) => educ.id !== ed.id,
+    );
+    updateData({ ...data, education: [...filteredEducation] });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        type={'text'}
-        label={'Degree'}
-        placeholder={'BS in Computer Science'}
-        value={degree}
-        onChange={(e) => setDegree(e.target.value)}
-      />
+    <>
+      <form onSubmit={handleSubmit}>
+        <Input
+          type={'text'}
+          label={'Degree'}
+          placeholder={'BS in Computer Science'}
+          value={degree}
+          onChange={(e) => setDegree(e.target.value)}
+        />
 
-      <Input
-        type={'text'}
-        label={'School'}
-        placeholder={'X University'}
-        value={school}
-        onChange={(e) => setSchool(e.target.value)}
-      />
+        <Input
+          type={'text'}
+          label={'School'}
+          placeholder={'X University'}
+          value={school}
+          onChange={(e) => setSchool(e.target.value)}
+        />
 
-      <Input
-        type={'text'}
-        label={'Year'}
-        placeholder={'20XX'}
-        value={year}
-        onChange={(e) => setYear(e.target.value)}
-      />
+        <Input
+          type={'text'}
+          label={'Year'}
+          placeholder={'20XX'}
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+        />
 
-      <button>Submit</button>
-    </form>
+        <button>Submit</button>
+      </form>
+
+      <div>
+        {data.education.map((ed) => (
+          <div key={ed.id}>
+            <h3>{ed.degree}</h3>
+            <p>{ed.school}</p>
+            <p>{ed.year}</p>
+            <Pencil onClick={() => handleEdit(ed)} />
+            <Trash onClick={() => handleDelete(ed)} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

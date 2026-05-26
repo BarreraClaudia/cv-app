@@ -3,9 +3,9 @@ import { useState } from 'react';
 import Input from './Input';
 
 export default function ContactForm({ data, updateData }) {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [website, setWebsite] = useState('');
+  const [email, setEmail] = useState(data.contact.email);
+  const [phone, setPhone] = useState(data.contact.phone);
+  const [website, setWebsite] = useState(data.contact.website);
 
   function handleSubmit(e) {
     e.preventDefault();

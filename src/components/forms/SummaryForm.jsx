@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function AboutMeForm({ data, updateData }) {
-  const [summary, setSummary] = useState('');
+export default function SummaryForm({ data, updateData }) {
+  const [summary, setSummary] = useState(data.summary);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,7 +14,7 @@ export default function AboutMeForm({ data, updateData }) {
   return (
     <form onSubmit={handleSubmit}>
       <textarea
-        label={'About Me'}
+        label={'Summary'}
         placeholder={'I am a great employee.'}
         value={summary}
         onChange={(e) => setSummary(e.target.value)}

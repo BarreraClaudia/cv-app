@@ -1,6 +1,6 @@
 import NameForm from './forms/NameForm';
 import ContactForm from './forms/ContactForm';
-import AboutMeForm from './forms/AboutMeForm';
+import SummaryForm from './forms/SummaryForm';
 import EducationForm from './forms/EducationForm';
 import WorkForm from './forms/WorkForm';
 
@@ -11,7 +11,7 @@ export default function Accordion({
   setActiveIndex,
 }) {
   return (
-    <>
+    <div>
       <Panel
         title="Name"
         isActive={activeIndex === 0}
@@ -27,11 +27,11 @@ export default function Accordion({
         <ContactForm data={data} updateData={updateData} />
       </Panel>
       <Panel
-        title="About Me"
+        title="Summary"
         isActive={activeIndex === 2}
         onShow={() => setActiveIndex(2)}
       >
-        <AboutMeForm data={data} updateData={updateData} />
+        <SummaryForm data={data} updateData={updateData} />
       </Panel>
       <Panel
         title="Education"
@@ -47,7 +47,7 @@ export default function Accordion({
       >
         <WorkForm data={data} updateData={updateData} />
       </Panel>
-    </>
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Header from './Header';
 import Accordion from './Accordion';
+import CVPreview from './CVPreview';
 
 import '../styles/App.css';
 
@@ -43,12 +44,15 @@ function App() {
   return (
     <>
       <Header />
-      <Accordion
-        data={cvData}
-        updateData={setCVData}
-        activeIndex={activeIndex}
-        setActiveIndex={setActiveIndex}
-      />
+      <div className="accordion-and-cv-preview-wrapper">
+        <Accordion
+          data={cvData}
+          updateData={setCVData}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+        />
+        <CVPreview data={cvData} />
+      </div>
     </>
   );
 }

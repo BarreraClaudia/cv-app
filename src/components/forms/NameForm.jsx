@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Input from './Input';
 
 export default function NameForm({ data, updateData }) {
-  const [fullName, setFullName] = useState('');
-  const [title, setTitle] = useState('');
+  const [fullName, setFullName] = useState(data.fullName);
+  const [title, setTitle] = useState(data.title);
 
   function handleSubmit(e) {
     e.preventDefault(); // Prevents the browser from refreshing
