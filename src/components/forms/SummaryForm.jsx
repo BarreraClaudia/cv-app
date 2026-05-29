@@ -20,7 +20,7 @@ export default function SummaryForm({ data, updateData }) {
         onChange={(e) => setSummary(e.target.value)}
       ></textarea>
 
-      <button>Submit</button>
+      <button className="submit-button">Submit</button>
     </form>
   );
 }

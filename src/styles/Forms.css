@@ -1,0 +1,101 @@
+form {
+  background-color: #26215c;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input,
+textarea {
+  border-radius: 8px;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  background-color: #30302e;
+  color: #fff;
+  border: 2px solid #30302e;
+}
+
+input::placeholder {
+  color: #717171;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #378add;
+}
+
+.submit-button,
+.add-detail-button {
+  align-self: end;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid #7f77dd;
+  background-color: #26215c;
+  color: #fff;
+}
+
+.submit-button:hover,
+.add-detail-button:hover {
+  background-color: #7f77dd;
+}
+
+.form-education-card,
+.form-work-card {
+  background-color: #185fa5;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  color: #fff;
+}
+
+.form-education-card p,
+.form-work-card p,
+.form-work-card li {
+  color: #81bcf6;
+}
+
+.form-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-detail {
+  background-color: #378add;
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-buttons-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  color: #730c99;
+  color: #4b0082;
+}
+
+.add-detail-and-submit-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-buttons-container,
+.work-buttons-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+  color: #7f77dd;
+  color: #4b0082;
+}

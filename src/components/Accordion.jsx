@@ -3,6 +3,8 @@ import ContactForm from './forms/ContactForm';
 import SummaryForm from './forms/SummaryForm';
 import EducationForm from './forms/EducationForm';
 import WorkForm from './forms/WorkForm';
+import { ChevronDown } from 'lucide-react';
+import '../styles/Accordion.css';
 
 export default function Accordion({
   data,
@@ -11,7 +13,8 @@ export default function Accordion({
   setActiveIndex,
 }) {
   return (
-    <div>
+    <div className="accordion">
+      <h2 className="accordion-heading">Edit your CV</h2>
       <Panel
         title="Name"
         isActive={activeIndex === 0}
@@ -54,8 +57,12 @@ export default function Accordion({
 function Panel({ title, children, isActive, onShow }) {
   return (
     <section className="panel">
-      <h2>{title}</h2>
-      <button onClick={onShow}>⌄</button>
+      <div className="panel-heading-and-button">
+        <h2 className="panel-heading">{title}</h2>
+        <button onClick={onShow} className="panel-show-button">
+          <ChevronDown />
+        </button>
+      </div>
       {isActive && <>{children}</>}
     </section>
   );

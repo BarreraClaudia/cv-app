@@ -1,6 +1,26 @@
 header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: rgb(137, 197, 197);
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #26215c;
+  color: #afa9ec;
+}
+
+header h1 {
+  font-size: var(--step-1);
+}
+
+.download-button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  background-color: #afa9ec;
+  color: #26215c;
+}
+
+.download-button:hover {
+  color: #fff;
+  background-color: #378add;
 }

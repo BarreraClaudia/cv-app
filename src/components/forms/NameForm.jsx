@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
 import Input from './Input';
+import '../../styles/Forms.css';
 
 export default function NameForm({ data, updateData }) {
   const [fullName, setFullName] = useState(data.fullName);
@@ -33,7 +33,7 @@ export default function NameForm({ data, updateData }) {
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <button>Submit</button>
+      <button className="submit-button">Submit</button>
     </form>
   );
 }

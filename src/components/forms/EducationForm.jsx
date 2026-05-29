@@ -47,7 +47,7 @@ export default function EducationForm({ data, updateData }) {
         <Input
           type={'text'}
           label={'Degree'}
-          placeholder={'BS in Computer Science'}
+          placeholder={'Bachelor of Technology'}
           value={degree}
           onChange={(e) => setDegree(e.target.value)}
         />
@@ -68,17 +68,20 @@ export default function EducationForm({ data, updateData }) {
           onChange={(e) => setYear(e.target.value)}
         />
 
-        <button>Submit</button>
+        <button className="submit-button">Submit</button>
       </form>
 
       <div>
         {data.education.map((ed) => (
-          <div key={ed.id}>
+          <div key={ed.id} className="form-education-card">
             <h3>{ed.degree}</h3>
-            <p>{ed.school}</p>
-            <p>{ed.year}</p>
-            <Pencil onClick={() => handleEdit(ed)} />
-            <Trash onClick={() => handleDelete(ed)} />
+            <p>
+              {ed.school} • {ed.year}
+            </p>
+            <div className="education-buttons-container">
+              <Pencil onClick={() => handleEdit(ed)} />
+              <Trash onClick={() => handleDelete(ed)} />
+            </div>
           </div>
         ))}
       </div>

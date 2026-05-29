@@ -113,26 +113,33 @@ export default function WorkForm({ data, updateData }) {
           onChange={(e) => setCurrentDetail(e.target.value)}
         />
 
-        <button type={'button'} onClick={handleAddDetail}>
-          Add Detail
-        </button>
-
-        <ul>
+        <ul className="form-details-list">
           {details.map((d) => (
-            <li key={d.id}>
+            <li key={d.id} className="form-detail">
               {d.text}
-              <Pencil onClick={() => handleEditDetail(d)} />
-              <Trash onClick={() => handleDeleteDetail(d)} />
+              <div className="detail-buttons-wrapper">
+                <Pencil onClick={() => handleEditDetail(d)} />
+                <Trash onClick={() => handleDeleteDetail(d)} />
+              </div>
             </li>
           ))}
         </ul>
 
-        <button>Submit</button>
+        <div className="add-detail-and-submit-buttons-wrapper">
+          <button
+            type={'button'}
+            onClick={handleAddDetail}
+            className="add-detail-button"
+          >
+            Add Detail
+          </button>
+          <button className="submit-button">Submit</button>
+        </div>
       </form>
 
       <div>
         {data.work.map((w) => (
-          <div key={w.id}>
+          <div key={w.id} className="form-work-card">
             <h3>{w.jobTitle}</h3>
             <p>{w.company}</p>
             <p>
@@ -143,8 +150,10 @@ export default function WorkForm({ data, updateData }) {
                 <li key={d.id}>{d.text}</li>
               ))}
             </ul>
-            <Pencil onClick={() => handleEditJob(w)} />
-            <Trash onClick={() => handleDeleteJob(w)} />
+            <div className="work-buttons-container">
+              <Pencil onClick={() => handleEditJob(w)} />
+              <Trash onClick={() => handleDeleteJob(w)} />
+            </div>
           </div>
         ))}
       </div>

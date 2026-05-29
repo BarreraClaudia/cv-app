@@ -1,0 +1,35 @@
+.accordion {
+  background-color: #3c3489;
+  padding: 2rem;
+}
+
+.accordion-heading {
+  font-size: var(--step-2);
+  color: #cecbf6;
+}
+
+.panel {
+  background-color: #26215c;
+  color: #afa9ec;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  border-radius: var(--radius);
+}
+
+.panel-heading {
+  font-size: var(--step-1);
+  margin-bottom: 1rem;
+}
+
+.panel-heading-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-show-button {
+  background-color: #26215c;
+  color: #afa9ec;
+  border: none;
+}

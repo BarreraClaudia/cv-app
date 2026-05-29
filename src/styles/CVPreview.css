@@ -1,0 +1,98 @@
+.cv-preview {
+  background-color: #ddebfa;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* middle line color */
+  background-color: #9bc8f6;
+  gap: 2px;
+  min-height: 100%;
+}
+
+.cv-left,
+.cv-right {
+  background-color: #ddebfa;
+}
+
+/*
+---------------
+Name & Title
+---------------
+*/
+
+.cv-name-wrapper {
+  padding: 2rem;
+  border-bottom: 2px solid #9bc8f6;
+}
+
+.cv-name {
+  font-size: var(--step-4);
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  color: #26215c;
+}
+
+.cv-title {
+  font-size: var(--step-1);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #185fa5;
+}
+
+/*
+---------------
+Contact, Summary, Education, Experience
+---------------
+*/
+
+.cv-info-title {
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  font-size: var(--step-2);
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  color: #0c58a4;
+}
+
+.cv-contact-wrapper,
+.cv-summary-wrapper,
+.cv-education-wrapper,
+.cv-work-wrapper {
+  padding: 2rem;
+}
+
+.cv-contact-wrapper,
+.cv-summary-wrapper {
+  border-bottom: 2px solid #9bc8f6;
+}
+
+.cv-icon-and-contact-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.contact-icon {
+  color: #378add;
+}
+
+.cv-degree,
+.cv-job-title {
+  color: #26215c;
+}
+
+.cv-year {
+  color: #378add;
+  font-weight: 500;
+}
+
+.cv-individual-education-wrapper,
+.cv-individual-work-wrapper {
+  margin-bottom: 1rem;
+}

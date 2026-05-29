@@ -40,12 +40,12 @@ export default function ContactForm({ data, updateData }) {
       <Input
         type={'text'}
         label={'Website'}
-        placeholder={'www.portfolio.com'}
+        placeholder={'portfolio.com'}
         value={website}
         onChange={(e) => setWebsite(e.target.value)}
       />
 
-      <button>Submit</button>
+      <button className="submit-button">Submit</button>
     </form>
   );
 }
