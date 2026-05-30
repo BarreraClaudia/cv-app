@@ -2,3 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
+
+@media (max-width: 900px) {
+  .accordion-and-cv-preview-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

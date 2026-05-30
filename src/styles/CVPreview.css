@@ -134,3 +134,17 @@ Contact, Summary, Education, Experience
     break-inside: avoid;
   }
 }
+
+@media (max-width: 500px) {
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-contact-info-wrapper,
+  .cv-summary,
+  .cv-education-info,
+  .cv-work-info {
+    padding: 0;
+    border-left: none;
+  }
+}
