@@ -43,12 +43,12 @@ Name & Title
 }
 
 .cv-title {
-  font-size: var(--step-1);
-  color: #b5d4f4;
-  background-color: #185fa5;
+  font-size: var(--step-0);
+  color: #fff;
+  background-color: #1a6db5;
   width: max-content;
-  padding: 0.5rem 1rem;
   border-radius: 30px;
+  padding: 0.25rem 0.75rem;
 }
 
 /*
@@ -60,7 +60,7 @@ Contact, Summary, Education, Experience
 .cv-info-title {
   text-transform: uppercase;
   font-size: var(--step-1);
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 2px;
   color: #185fa5;
 }
@@ -87,6 +87,7 @@ Contact, Summary, Education, Experience
 .cv-degree,
 .cv-job-title {
   color: #0c447c;
+  font-size: var(--step-1);
 }
 
 .cv-year {
