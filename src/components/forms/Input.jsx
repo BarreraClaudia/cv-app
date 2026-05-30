@@ -1,4 +1,11 @@
-export default function Input({ type, label, placeholder, value, onChange }) {
+export default function Input({
+  type,
+  label,
+  placeholder,
+  value,
+  onChange,
+  error,
+}) {
   return (
     <label>
       {label}
@@ -7,7 +14,9 @@ export default function Input({ type, label, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className={error ? 'input-error' : ''}
       />
+      {error && <span className="error-message">{error}</span>}
     </label>
   );
 }

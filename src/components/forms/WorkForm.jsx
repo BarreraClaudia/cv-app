@@ -9,9 +9,25 @@ export default function WorkForm({ data, updateData }) {
   const [yearEnd, setYearEnd] = useState('');
   const [details, setDetails] = useState([]);
   const [currentDetail, setCurrentDetail] = useState('');
+  const [errors, setErrors] = useState({
+    jobTitle: '',
+    company: '',
+    yearStart: '',
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    const newErrors = { degree: '', school: '', year: '' };
+
+    if (jobTitle === '') newErrors.jobTitle = 'This field is required.';
+    if (company === '') newErrors.company = 'This field is required.';
+    if (yearStart === '') newErrors.yearStart = 'This field is required.';
+
+    setErrors(newErrors);
+
+    if (newErrors.jobTitle || newErrors.company || newErrors.yearStart) return;
+
     updateData({
       ...data,
       work: [
@@ -75,26 +91,29 @@ export default function WorkForm({ data, updateData }) {
       <form onSubmit={handleSubmit}>
         <Input
           type={'text'}
-          label={'Job Title'}
+          label={'Job Title *'}
           placeholder={'Web Dev'}
           value={jobTitle}
           onChange={(e) => setJobTitle(e.target.value)}
+          error={errors.jobTitle}
         />
 
         <Input
           type={'text'}
-          label={'Company'}
+          label={'Company *'}
           placeholder={'X Inc.'}
           value={company}
           onChange={(e) => setCompany(e.target.value)}
+          error={errors.company}
         />
 
         <Input
           type={'number'}
-          label={'Year Started'}
+          label={'Year Started *'}
           placeholder={'20XX'}
           value={yearStart}
           onChange={(e) => setYearStart(e.target.value)}
+          error={errors.yearStart}
         />
 
         <Input
@@ -142,9 +161,7 @@ export default function WorkForm({ data, updateData }) {
           <div key={w.id} className="form-work-card">
             <h3>{w.jobTitle}</h3>
             <p>{w.company}</p>
-            <p>
-              {w.yearStart} to {w.yearEnd}
-            </p>
+            <p>{w.yearEnd ? w.yearStart + ' - ' + w.yearEnd : w.yearStart}</p>
             <ul>
               {w.details.map((d) => (
                 <li key={d.id}>{d.text}</li>

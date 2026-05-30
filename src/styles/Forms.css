@@ -99,3 +99,14 @@ textarea:focus {
   color: #7f77dd;
   color: #4b0082;
 }
+
+.error-message {
+  font-size: 0.9rem;
+  color: #e24b4a;
+  margin-top: 2px;
+}
+
+.input-error {
+  border-color: #e24b4a;
+  outline-color: #e24b4a;
+}

@@ -103,7 +103,7 @@ function CVWork({ data }) {
               <h3 className="cv-job-title">{w.jobTitle}</h3>
               <p>{w.company}</p>
               <p className="cv-year">
-                {w.yearStart} - {w.yearEnd}
+                {w.yearEnd ? w.yearStart + ' - ' + w.yearEnd : w.yearStart}
               </p>
               <ul>
                 {w.details.map((d) => (
