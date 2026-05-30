@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pencil, Trash } from 'lucide-react';
+import { Pencil, Trash, ArrowUp, ArrowDown } from 'lucide-react';
 import Input from './Input';
 
 export default function WorkForm({ data, updateData }) {
@@ -69,6 +69,26 @@ export default function WorkForm({ data, updateData }) {
     setDetails(filteredDetails);
   }
 
+  function handleMoveUpDetail(index) {
+    if (index === 0) return;
+    const newDetails = [...details];
+    [newDetails[index - 1], newDetails[index]] = [
+      newDetails[index],
+      newDetails[index - 1],
+    ];
+    setDetails(newDetails);
+  }
+
+  function handleMoveDownDetail(index) {
+    if (index === details.length - 1) return;
+    const newDetails = [...details];
+    [newDetails[index + 1], newDetails[index]] = [
+      newDetails[index],
+      newDetails[index + 1],
+    ];
+    setDetails(newDetails);
+  }
+
   function handleEditJob(w) {
     setJobTitle(w.jobTitle);
     setCompany(w.company);
@@ -84,6 +104,20 @@ export default function WorkForm({ data, updateData }) {
   function handleDeleteJob(w) {
     const filteredData = data.work.filter((job) => job.id !== w.id);
     updateData({ ...data, work: [...filteredData] });
+  }
+
+  function handleMoveUpJob(index) {
+    if (index === 0) return;
+    const newWork = [...data.work];
+    [newWork[index - 1], newWork[index]] = [newWork[index], newWork[index - 1]];
+    updateData({ ...data, work: newWork });
+  }
+
+  function handleMoveDownJob(index) {
+    if (index === data.work.length - 1) return;
+    const newWork = [...data.work];
+    [newWork[index + 1], newWork[index]] = [newWork[index], newWork[index + 1]];
+    updateData({ ...data, work: newWork });
   }
 
   return (
@@ -133,12 +167,26 @@ export default function WorkForm({ data, updateData }) {
         />
 
         <ul className="form-details-list">
-          {details.map((d) => (
+          {details.map((d, index) => (
             <li key={d.id} className="form-detail">
               {d.text}
               <div className="detail-buttons-wrapper">
-                <Pencil onClick={() => handleEditDetail(d)} />
-                <Trash onClick={() => handleDeleteDetail(d)} />
+                <ArrowUp
+                  onClick={() => handleMoveUpDetail(index)}
+                  className={index === 0 ? 'disabled' : ''}
+                />
+                <ArrowDown
+                  onClick={() => handleMoveDownDetail(index)}
+                  className={index === details.length - 1 ? 'disabled' : ''}
+                />
+                <Pencil
+                  className="pencil-button"
+                  onClick={() => handleEditDetail(d)}
+                />
+                <Trash
+                  className="trash-button"
+                  onClick={() => handleDeleteDetail(d)}
+                />
               </div>
             </li>
           ))}
@@ -156,8 +204,8 @@ export default function WorkForm({ data, updateData }) {
         </div>
       </form>
 
-      <div>
-        {data.work.map((w) => (
+      <div className="entries-list">
+        {data.work.map((w, index) => (
           <div key={w.id} className="form-work-card">
             <h3>{w.jobTitle}</h3>
             <p>{w.company}</p>
@@ -168,8 +216,22 @@ export default function WorkForm({ data, updateData }) {
               ))}
             </ul>
             <div className="work-buttons-container">
-              <Pencil onClick={() => handleEditJob(w)} />
-              <Trash onClick={() => handleDeleteJob(w)} />
+              <ArrowUp
+                onClick={() => handleMoveUpJob(index)}
+                className={index === 0 ? 'disabled' : ''}
+              />
+              <ArrowDown
+                onClick={() => handleMoveDownJob(index)}
+                className={index === data.work.length - 1 ? 'disabled' : ''}
+              />
+              <Pencil
+                className="pencil-button"
+                onClick={() => handleEditJob(w)}
+              />
+              <Trash
+                className="trash-button"
+                onClick={() => handleDeleteJob(w)}
+              />
             </div>
           </div>
         ))}

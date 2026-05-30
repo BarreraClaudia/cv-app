@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pencil, Trash } from 'lucide-react';
+import { Pencil, Trash, ArrowUp, ArrowDown } from 'lucide-react';
 import Input from './Input';
 
 export default function EducationForm({ data, updateData }) {
@@ -56,6 +56,26 @@ export default function EducationForm({ data, updateData }) {
     updateData({ ...data, education: [...filteredEducation] });
   }
 
+  function handleMoveUp(index) {
+    if (index === 0) return;
+    const newEducation = [...data.education];
+    [newEducation[index - 1], newEducation[index]] = [
+      newEducation[index],
+      newEducation[index - 1],
+    ];
+    updateData({ ...data, education: newEducation });
+  }
+
+  function handleMoveDown(index) {
+    if (index === data.education.length - 1) return;
+    const newEducation = [...data.education];
+    [newEducation[index + 1], newEducation[index]] = [
+      newEducation[index],
+      newEducation[index + 1],
+    ];
+    updateData({ ...data, education: newEducation });
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -89,14 +109,24 @@ export default function EducationForm({ data, updateData }) {
         <button className="submit-button">Submit</button>
       </form>
 
-      <div>
-        {data.education.map((ed) => (
+      <div className="entries-list">
+        {data.education.map((ed, index) => (
           <div key={ed.id} className="form-education-card">
             <h3>{ed.degree}</h3>
             <p>
               {ed.school} • {ed.year}
             </p>
             <div className="education-buttons-container">
+              <ArrowUp
+                onClick={() => handleMoveUp(index)}
+                className={index === 0 ? 'disabled' : ''}
+              />
+              <ArrowDown
+                onClick={() => handleMoveDown(index)}
+                className={
+                  index === data.education.length - 1 ? 'disabled' : ''
+                }
+              />
               <Pencil onClick={() => handleEdit(ed)} />
               <Trash onClick={() => handleDelete(ed)} />
             </div>
