@@ -39,11 +39,17 @@ textarea:focus {
   border: 2px solid #7f77dd;
   background-color: #26215c;
   color: #fff;
+  transition: transform 0.1s ease;
 }
 
 .submit-button:hover,
 .add-detail-button:hover {
   background-color: #7f77dd;
+}
+
+.submit-button:active,
+.add-detail-button:active {
+  transform: scale(0.97);
 }
 
 .form-education-card,

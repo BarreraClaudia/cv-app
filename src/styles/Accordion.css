@@ -17,19 +17,30 @@
   border-radius: var(--radius);
 }
 
-.panel-heading {
-  font-size: var(--step-1);
-  margin-bottom: 1rem;
-}
-
-.panel-heading-and-button {
+.panel-toggle {
+  background-color: #26215c;
+  color: #afa9ec;
+  border: none;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.panel-show-button {
-  background-color: #26215c;
-  color: #afa9ec;
-  border: none;
+.panel-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.panel-content.open {
+  max-height: 1000px;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron-open {
+  transform: rotate(180deg);
 }
