@@ -39,8 +39,6 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cvData, setCVData] = useState(cvDataModel);
 
-  console.log('data in App:', cvData);
-
   return (
     <>
       <Header />
